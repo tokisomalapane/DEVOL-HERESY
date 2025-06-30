@@ -48,7 +48,7 @@ export default function Home() {
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl transform rotate-3"></div>
               <img
-                src="/placeholder.svg?height=320&width=320"
+                src="/Exclusive /IMG_20250524_114229.jpg?height=320&width=320"
                 alt="Exclusive collection preview"
                 className="absolute inset-0 object-cover rounded-xl"
               />
@@ -57,7 +57,7 @@ export default function Home() {
         </div>
       </section>
 
-      <TestimonialsSection />
+    
       <TeamSection />
       <SocialMediaSection />
     </main>

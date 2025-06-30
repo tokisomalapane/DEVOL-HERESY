@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
@@ -39,8 +38,10 @@ export default function FeaturedProducts() {
               <span className="font-bold">R{product.price.toFixed(2)}</span>
             </div>
             <p className="text-sm text-neutral-500 mb-4">{product.category}</p>
-            <Button onClick={() => addToCart(product, 1)} className="w-full" variant="outline">
-              <ShoppingBag className="mr-2 h-4 w-4" /> Add to Cart
+            <Button asChild className="w-full" variant="outline">
+              <Link href={`/product/${product.id}`}>
+                <ShoppingBag className="mr-2 h-4 w-4" /> View Product
+              </Link>
             </Button>
           </CardContent>
         </Card>

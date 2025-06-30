@@ -1,16 +1,20 @@
 "use client"
-
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import type { Product } from "@/types/product"
 
 export interface CartItem {
-  product: Product
+   product: Product & {
+    selectedSize: string
+    selectedColor: string
+  }
+  
   quantity: number
+  
 }
 
 interface CartContextType {
   cartItems: CartItem[]
-  addToCart: (product: Product, quantity: number) => void
+  addToCart: (product: Product, quantity: number, selectedSize: string, selectedColor: string) => void
   removeFromCart: (productId: string) => void
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
@@ -21,36 +25,47 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  // Load cart from localStorage on initial render
+  // Load cart from localStorage only on client side
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart")
-    if (savedCart) {
-      try {
-        setCartItems(JSON.parse(savedCart))
-      } catch (error) {
-        console.error("Failed to parse cart from localStorage:", error)
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem("cart")
+      if (savedCart) {
+        try {
+          setCartItems(JSON.parse(savedCart))
+        } catch (error) {
+          console.error("Failed to parse cart from localStorage:", error)
+        }
       }
+      setIsLoaded(true)
     }
   }, [])
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes (only on client)
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems))
-  }, [cartItems])
+    if (isLoaded && typeof window !== 'undefined') {
+      localStorage.setItem("cart", JSON.stringify(cartItems))
+    }
+  }, [cartItems, isLoaded])
 
-  const addToCart = (product: Product, quantity: number) => {
+  const addToCart = (product: Product, quantity: number , selectedSize: string , selectedColor: string) => {
     setCartItems((prevItems) => {
-      const existingItemIndex = prevItems.findIndex((item) => item.product.id === product.id)
+      const existingItemIndex = prevItems.findIndex(
+        (item) => 
+          item.product.id === product.id)
 
       if (existingItemIndex >= 0) {
-        // Update quantity if product already in cart
         const updatedItems = [...prevItems]
         updatedItems[existingItemIndex].quantity += quantity
         return updatedItems
       } else {
-        // Add new item to cart
-        return [...prevItems, { product, quantity }]
+        return [...prevItems, { product: {
+            ...product,
+            selectedSize,
+            selectedColor
+          }, 
+          quantity }]
       }
     })
   }
@@ -64,8 +79,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       removeFromCart(productId)
       return
     }
-
-    setCartItems((prevItems) => prevItems.map((item) => (item.product.id === productId ? { ...item, quantity } : item)))
+    setCartItems((prevItems) => 
+      prevItems.map((item) => 
+        item.product.id === productId ? { ...item, quantity } : item
+      )
+    )
   }
 
   const clearCart = () => {

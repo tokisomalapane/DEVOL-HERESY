@@ -47,8 +47,10 @@ export default function ProductGrid({ products }: ProductGridProps) {
               <span className="font-bold text-sm md:text-base">R{product.price.toFixed(2)}</span>
             </div>
             <p className="text-xs md:text-sm text-neutral-500 mb-3 md:mb-4">{product.subcategory}</p>
-            <Button onClick={() => addToCart(product, 1)} className="w-full text-xs md:text-sm" variant="outline">
-              <ShoppingBag className="mr-2 h-3 w-3 md:h-4 md:w-4" /> Add to Cart
+            <Button asChild className="w-full" variant="outline">
+              <Link href={`/product/${product.id}`}>
+                <ShoppingBag className="mr-2 h-4 w-4" /> View Product
+              </Link>
             </Button>
           </CardContent>
         </Card>

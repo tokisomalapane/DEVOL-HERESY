@@ -20,12 +20,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
   const handleAddToCart = () => {
     addToCart(
-      {
-        ...product,
+      
+        product,
+        quantity,
         selectedSize,
         selectedColor,
-      },
-      quantity,
+      
+      
     )
   }
 
@@ -118,7 +119,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </div>
             <div>
               <h3 className="font-medium text-sm md:text-base">Returns</h3>
-              <p className="text-xs md:text-sm text-neutral-500">Free 30-day returns for unworn items</p>
+              <p className="text-xs md:text-sm text-neutral-500">Free same day returns for unworn items</p>
             </div>
           </div>
         </div>

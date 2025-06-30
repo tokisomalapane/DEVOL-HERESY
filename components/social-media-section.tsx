@@ -101,36 +101,7 @@ export default function SocialMediaSection() {
             </div>
           </div>
 
-          <div className="bg-neutral-900 rounded-lg p-6">
-            <h3 className="text-xl font-bold mb-4 text-white">DEVOL HERESY Playlist</h3>
-            <p className="text-neutral-300 mb-6 text-sm md:text-base">
-              Listen to the sounds that inspire our designs. Our curated playlist features South African artists and
-              global influences that embody the DEVOL HERESY spirit.
-            </p>
-
-            <div className="aspect-[4/3] bg-black rounded-md overflow-hidden">
-              {
-                <iframe 
-                style={{ borderRadius: '12px' }}
-                src="https://open.spotify.com/embed/playlist/4pRTrzKzAXNCGpJEdFtYuf?utm_source=generator" 
-                width="100%" 
-                height="352" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy"
-              ></iframe>
-              }
-              <div className="w-full h-full flex items-center justify-center bg-neutral-800 text-white">
-                <div className="text-center p-4">
-                  <Music className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-4" />
-                  <p className="font-medium">DEVOL HERESY Official Playlist</p>
-                  <p className="text-sm text-neutral-400 mt-2">Spotify playlist would be embedded here</p>
-                  <Button className="mt-4 bg-green-600 hover:bg-green-700">Listen on Spotify</Button>
-                </div>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
     </section>
