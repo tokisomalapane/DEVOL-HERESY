@@ -9,24 +9,27 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex items-center z-20">
         <div className="container mx-auto px-4">
           <div className="max-w-xl">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4">This Isnt That</h1>
-            <p className="text-lg sm:text-xl text-white/90 mb-8">
-              Discover our new collection of premium essentials and exclusive pieces designed for everyday confidence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
-                <Link href="/shop">Shop Now</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                <Link href="/shop/exclusives">Explore Exclusives</Link>
-              </Button>
+            <div className="max-h-0"> 
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-black mb-4"> . </h1>
+              <p className="text-lg sm:text-xl text-white/90 mb-8">
+                
+                This Isnt That
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
+                  <Link href="/shop">Shop Now</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="text-black border-white hover:bg-white/10">
+                  <Link href="/shop/exclusives">Explore Exclusives</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <img
-        src="/placeholder.svg?height=1080&width=1920"
+        src="/IMG_20250701_222402.jpg?height=1080&width=1920"
         alt="Fashion model wearing DEVOL HERESY clothing"
         className="absolute inset-0 w-full h-full object-cover"
       />

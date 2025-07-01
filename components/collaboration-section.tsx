@@ -9,49 +9,49 @@ const collaborations = [
   {
     id: 1,
     title: "Summer Collection with Local Artists",
-    description: "A unique collaboration featuring artwork from South African artists.",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20240310_174259.jpg?height=800&width=1200",
   },
   {
     id: 2,
     title: "Street Culture Series",
-    description: "Celebrating urban culture with bold designs and authentic expression.",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20230927_111240.jpg?height=800&width=1200",
   },
   {
     id: 3,
-    title: "Heritage Collection",
-    description: "Honoring South African heritage with traditional patterns and modern cuts.",
+    title: "Collection with Local Artists",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG-20231114-WA0005.jpg?height=800&width=1200",
   },
   {
     id: 4,
-    title: "Sports Edition",
-    description: "Performance wear designed with local athletes for ultimate comfort and style.",
+    title: "Street Culture Series",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20241130_083958.jpg?height=800&width=1200",
   },
   {
     id: 5,
-    title: "Sports Edition",
-    description: "Performance wear designed with local athletes for ultimate comfort and style.",
+    title: "Collection with Local Artists",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20240103_162749.jpg?height=800&width=1200",
   },
   {
     id: 6,
-    title: "Sports Edition",
-    description: "Performance wear designed with local athletes for ultimate comfort and style.",
+    title: "Collection with Local Artists",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20240103_162856.jpg?height=800&width=1200",
   },
   {
     id: 7,
     title: "Sports Edition",
-    description: "Performance wear designed with local athletes for ultimate comfort and style.",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20230709_131602_460.jpg?height=800&width=1200",
   },
   {
     id: 8,
     title: "Sports Edition",
-    description: "Performance wear designed with local athletes for ultimate comfort and style.",
+    description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20230709_131602_557.jpg?height=800&width=1200",
   },
 ]
@@ -160,7 +160,7 @@ export default function CollaborationSection() {
           )}
 
           {/* Regular view */}
-          <div id="collaboration-carousel" className="relative aspect-[16/9] overflow-hidden rounded-xl">
+          <div id="collaboration-carousel" className="relative aspect-[16/18] overflow-hidden rounded-xl">
             <img
               src={currentCollaboration.image || "/Photographs/IMG_20241130_083958.jpg"}
               alt={currentCollaboration.title}

@@ -7,8 +7,9 @@ export default function SocialMediaSection() {
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center">Connect With Us</h2>
+        
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-5xl mx-auto">
           <div className="space-y-6">
             <h3 className="text-xl font-bold mb-4">Follow Our Journey</h3>
             <p className="text-neutral-600 mb-6 text-sm md:text-base">
@@ -19,7 +20,7 @@ export default function SocialMediaSection() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
               <Link
                 href="https://www.instagram.com/devol.heresy.merch/"
-                className="flex flex-col items-center justify-center p-4 md:p-6 bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-lg hover:opacity-90 transition"
+                className="flex flex-col items-center justify-center p-4 md:p-6 bg-black text-white rounded-lg hover:opacity-90 transition"
               >
                 <Instagram className="h-6 w-6 md:h-8 md:w-8 mb-2" />
                 <span className="font-medium text-sm md:text-base">Instagram</span>
@@ -27,7 +28,7 @@ export default function SocialMediaSection() {
 
               <Link
                 href="https://www.facebook.com/people/Devol-Heresy-Clothing/100064125063373/?locale=bs_BA"
-                className="flex flex-col items-center justify-center p-4 md:p-6 bg-blue-600 text-white rounded-lg hover:opacity-90 transition"
+                className="flex flex-col items-center justify-center p-4 md:p-6 bg-black text-white rounded-lg hover:opacity-90 transition"
               >
                 <Facebook className="h-6 w-6 md:h-8 md:w-8 mb-2" />
                 <span className="font-medium text-sm md:text-base">Facebook</span>
@@ -35,7 +36,7 @@ export default function SocialMediaSection() {
 
               <Link
                 href="https://www.youtube.com/channel/UCdKIudxHkTXw2Xu1gf4pnOg"
-                className="flex flex-col items-center justify-center p-4 md:p-6 bg-red-600 text-white rounded-lg hover:opacity-90 transition"
+                className="flex flex-col items-center justify-center p-4 md:p-6 bg-black text-white rounded-lg hover:opacity-90 transition"
               >
                 <Youtube className="h-6 w-6 md:h-8 md:w-8 mb-2" />
                 <span className="font-medium text-sm md:text-base">YouTube</span>
@@ -69,7 +70,7 @@ export default function SocialMediaSection() {
 
               <Link
                 href="https://www.tiktok.com/@devolheresy.clothing"
-                className="flex flex-col items-center justify-center p-4 md:p-6 bg-gradient-to-br from-pink-500 to-red-500 text-white rounded-lg hover:opacity-90 transition"
+                className="flex flex-col items-center justify-center p-4 md:p-6 bg-black text-white rounded-lg hover:opacity-90 transition"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +94,7 @@ export default function SocialMediaSection() {
 
               <Link
                 href="https://open.spotify.com/playlist/4pRTrzKzAXNCGpJEdFtYuf?si=vDQenf8pSaaCN5sdVsHviQ&nd=1&_branch_match_id=1441865208841516401&utm_medium=sharing&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXLy7IL8lMq9TLyczL1nfLrszPKTHMT6lMsq8rSk1LLSrKzEuPTyrKLy9OLbJ1zijKz00FABWo%2F2I6AAAA"
-                className="flex flex-col items-center justify-center p-4 md:p-6 bg-green-600 text-white rounded-lg hover:opacity-90 transition"
+                className="flex flex-col items-center justify-center p-4 md:p-6 bg-black text-white rounded-lg hover:opacity-90 transition"
               >
                 <Music className="h-6 w-6 md:h-8 md:w-8 mb-2" />
                 <span className="font-medium text-sm md:text-base">Spotify</span>

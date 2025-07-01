@@ -16,14 +16,32 @@ type FilterContextType = {
   clearAll: () => void
 }
 
+type FilterProviderProps = {
+  children: React.ReactNode
+  initialFilters?: {
+    category?: string
+    subcategory?: string
+    sizes?: string[]
+    colors?: string[]
+    priceRange?: [number, number]
+  }
+}
+
 const FilterContext = createContext<FilterContextType | undefined>(undefined)
 
-export function FilterProvider({ children }: { children: React.ReactNode }) {
-  const [categories, setCategories] = useState<string[]>([])
-  const [subcategories, setSubcategories] = useState<string[]>([])
-  const [sizes, setSizes] = useState<string[]>([])
-  const [colors, setColors] = useState<string[]>([])
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000])
+export function FilterProvider({ children, initialFilters }: FilterProviderProps) {
+  // Initialize state with URL parameters if they exist
+  const [categories, setCategories] = useState<string[]>(
+    initialFilters?.category ? [initialFilters.category] : []
+  )
+  const [subcategories, setSubcategories] = useState<string[]>(
+    initialFilters?.subcategory ? [initialFilters.subcategory] : []
+  )
+  const [sizes, setSizes] = useState<string[]>(initialFilters?.sizes || [])
+  const [colors, setColors] = useState<string[]>(initialFilters?.colors || [])
+  const [priceRange, setPriceRange] = useState<[number, number]>(
+    initialFilters?.priceRange || [0, 10000]
+  )
 
   const clearAll = () => {
     setCategories([])

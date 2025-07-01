@@ -5,14 +5,19 @@ import ProductGrid from "@/components/product-grid"
 import { getAllProducts } from "@/lib/products"
 import ShopFilters from "@/components/shop-filters"
 import type { Product } from "@/types/product"
-
+import { useSearchParams } from "next/navigation"
 
 export default function ShopPage() {
+  const searchParams = useSearchParams()
   const allProducts = getAllProducts()
+
   
 
   return (
-    <FilterProvider>
+    <FilterProvider initialFilters ={{
+    
+      subcategory: searchParams.get('subcategory') || ''
+    }}>
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <aside className="w-full md:w-64 shrink-0">

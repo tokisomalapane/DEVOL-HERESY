@@ -52,7 +52,7 @@ export default function AboutPage() {
                 Our Exclusives collection features limited edition pieces designed for those who want to stand out.
                 These unique items are produced in small quantities and often sell out quickly.
               </p>
-              <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button asChild variant="outline" className="border-white text-black hover:bg-white/10">
                 <Link href="/shop/exclusives">Shop Exclusives</Link>
               </Button>
             </div>
