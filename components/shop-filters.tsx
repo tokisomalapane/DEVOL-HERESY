@@ -6,8 +6,22 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useFilters } from "@/context/filter-context"
 import { Slider } from "@/components/ui/slider"
+import { useRouter } from "next/navigation" // Added for navigation
+import { useEffect } from "react" // Added for effect handling
 
-export default function ShopFilters() {
+interface ShopFiltersProps {
+  onFilterChange?: (filters: {
+    categories: string[]
+    subcategories: string[]
+    sizes: string[]
+    colors: string[]
+    priceRange: [number, number]
+  }) => void
+}
+
+
+
+export default function ShopFilters({ onFilterChange }: ShopFiltersProps) {
   const {
     categories: selectedCategories,
     subcategories: selectedSubcategories,
@@ -20,8 +34,9 @@ export default function ShopFilters() {
     setColors,
     setPriceRange,
     clearAll 
-
   } = useFilters()
+
+  const router = useRouter() // Initialize router
 
   const filterOptions = {
     categories: [
@@ -53,6 +68,35 @@ export default function ShopFilters() {
     ]
   }
 
+  // Update URL when filters change
+  useEffect(() => {
+    const params = new URLSearchParams()
+    
+    if (selectedCategories.length > 0) {
+      params.set('categories', selectedCategories.join(','))
+    }
+    
+    if (selectedSubcategories.length > 0) {
+      params.set('subcategories', selectedSubcategories.join(','))
+    }
+
+    params.set('minPrice', priceRange[0].toString())
+    params.set('maxPrice', priceRange[1].toString())
+    
+    // Push new URL without page reload
+    router.push(`/shop?${params.toString()}`, { scroll: false })
+
+    if (onFilterChange) {
+    onFilterChange({
+      categories: selectedCategories,
+      subcategories: selectedSubcategories,
+      sizes: selectedSizes,
+      colors: selectedColors,
+      priceRange
+    })
+    }
+  }, [selectedCategories, selectedSubcategories, router])
+
   const renderFilterSection = (
     value: string,
     title: string,
@@ -83,7 +127,15 @@ export default function ShopFilters() {
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium mb-4">Filters</h3>
-        <Button variant="outline" size="sm" onClick={clearAll} className="w-full">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={() => {
+            clearAll()
+            router.push('/shop', { scroll: false })
+          }} 
+          className="w-full"
+        >
           Clear All
         </Button>
       </div>

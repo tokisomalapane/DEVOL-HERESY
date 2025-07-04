@@ -239,8 +239,8 @@ export function getFeaturedProducts(): Product[] {
 }
 
 // Get product by ID
-export function getProductById(id: string): Product | undefined {
-  return products.find((product) => product.id === id)
+export async function getProductById(id: string) {
+  return Promise.resolve(products.find(p => p.id === id))
 }
 
 // Get products by category
@@ -261,4 +261,9 @@ export function getExclusiveProducts(): Product[] {
 // Get essential products
 export function getEssentialProducts(): Product[] {
   return products.filter((product) => product.category === "Essentials")
+}
+
+// Get all Product Id
+export  function getAllProductIds(): { id: string }[] {
+  return products.map(product => ({ id: product.id }))
 }

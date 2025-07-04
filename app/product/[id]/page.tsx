@@ -1,18 +1,17 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getProductById } from "@/lib/products"
+import { getProductById, getAllProductIds } from "@/lib/products"
 import ProductDetails from "@/components/product-details"
 import RelatedProducts from "@/components/related-products"
 
-interface ProductPageProps {
-  params: {
-    id: string
-  }
+// This generates all possible product pages at build time
+export async function generateStaticParams() {
+  return getAllProductIds()
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { id } = await Promise.resolve(params); // Ensure params is awaited
-  const product = await getProductById(id);
+export default async function ProductPage({ params }: { params: { id: string } }) {
+  const { id } = await Promise.resolve(params)
+  const product = await getProductById(id)
 
   if (!product) {
     notFound()
@@ -30,7 +29,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             Shop
           </Link>
           <span className="mx-2">/</span>
-          <Link href={`/shop/${product.category.toLowerCase()}`} className="hover:text-black">
+          <Link 
+            href={`/shop/${product.category.toLowerCase()}/`} // Added trailing slash
+            className="hover:text-black"
+          >
             {product.category}
           </Link>
           <span className="mx-2">/</span>
@@ -42,7 +44,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <section className="mt-16">
         <h2 className="text-2xl font-bold mb-6">You May Also Like</h2>
-        <RelatedProducts currentProductId={product.id} category={product.category} />
+        <RelatedProducts 
+          currentProductId={product.id} 
+          category={product.category} 
+        />
       </section>
     </main>
   )
