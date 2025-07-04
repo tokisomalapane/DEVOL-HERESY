@@ -9,27 +9,26 @@ export default function AboutPage() {
 
         <div className="prose prose-lg">
           <p className="mb-6">
-            Founded in 2023, DEVOL H is a contemporary clothing brand dedicated to creating premium essentials and
-            exclusive pieces for the modern individual.
+            Founded in 2019,Devol Heresy was born from a passion for authenticity, 
+            creativity, and bold self-expression. 
           </p>
 
           <p className="mb-6">
-            Our mission is to provide high-quality, stylish clothing that combines comfort, durability, and timeless
-            design. We believe that good clothing should be accessible to everyone, which is why we focus on creating
-            versatile pieces that can be worn in various settings and occasions.
+            We set out to create more than just clothing we wanted to build a brand 
+            that speaks to individuals who move with purpose and style.
           </p>
 
           <h2 className="text-2xl font-bold mt-12 mb-4">Our Philosophy</h2>
 
           <p className="mb-6">
-            At DEVOL H, we are committed to ethical manufacturing practices and sustainable production methods. We
-            carefully select our materials and work with partners who share our values of fair labor and environmental
-            responsibility.
+            At Devol Heresy , every piece starts from scratch. From fabric selection 
+            to final stitch, our process is rooted in originality and craftsmanship. 
           </p>
 
           <p className="mb-6">
-            We believe that clothing is more than just fabric—it's a form of self-expression. Our designs are created to
-            help you express your unique style while providing the comfort and quality you deserve.
+            We don’t follow trends — we set them. Our fashion-forward designs combine 
+            elevated streetwear with timeless style, offering standout pieces that feel 
+            as good as they look.
           </p>
 
           <h2 className="text-2xl font-bold mt-12 mb-4">Our Collections</h2>

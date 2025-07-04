@@ -44,13 +44,13 @@ const collaborations = [
   },
   {
     id: 7,
-    title: "Sports Edition",
+    title: "Collection with Local Artists",
     description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20230709_131602_460.jpg?height=800&width=1200",
   },
   {
     id: 8,
-    title: "Sports Edition",
+    title: "Collection with Local Artists",
     description: "A unique collaboration featuring South African artists.",
     image: "/Photographs/IMG_20230709_131602_557.jpg?height=800&width=1200",
   },

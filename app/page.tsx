@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
     
-      <TeamSection />
+      {/*<TeamSection />*/}
       <SocialMediaSection />
     </main>
   )
