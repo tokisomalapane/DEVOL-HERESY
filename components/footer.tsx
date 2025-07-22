@@ -48,32 +48,32 @@ export default function Footer() {
             <h4 className="font-medium mb-4">Categories</h4>
             <ul className="space-y-2 text-neutral-400">
               <li>
-                <Link href="/shop/essentials/t-shirts" className="hover:text-white transition">
+                <Link href="/shop/?subcategories=T-Shirts&minPrice=0&maxPrice=10000" className="hover:text-white transition">
                   T-Shirts
                 </Link>
               </li>
               <li>
-                <Link href="/shop/essentials/hoodies" className="hover:text-white transition">
+                <Link href="/shop/?subcategories=Hoodies" className="hover:text-white transition">
                   Hoodies
                 </Link>
               </li>
               <li>
-                <Link href="/shop/essentials/pants" className="hover:text-white transition">
+                <Link href="/shop/?subcategories=Pants" className="hover:text-white transition">
                   Pants
                 </Link>
               </li>
               <li>
-                <Link href="/shop/essentials/shorts" className="hover:text-white transition">
+                <Link href="/shop/?subcategories=Shorts" className="hover:text-white transition">
                   Shorts
                 </Link>
               </li>
               <li>
-                <Link href="/shop/essentials/jackets" className="hover:text-white transition">
+                <Link href="/shop/?subcategories=Jackets" className="hover:text-white transition">
                   Jackets
                 </Link>
               </li>
               <li>
-                <Link href="/shop/essentials/hats" className="hover:text-white transition">
+                <Link href="/shop/?subcategories=Hats" className="hover:text-white transition">
                   Hats
                 </Link>
               </li>

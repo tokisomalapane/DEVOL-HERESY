@@ -6,8 +6,8 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useFilters } from "@/context/filter-context"
 import { Slider } from "@/components/ui/slider"
-import { useRouter } from "next/navigation" // Added for navigation
-import { useEffect } from "react" // Added for effect handling
+import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect } from "react"
 
 interface ShopFiltersProps {
   onFilterChange?: (filters: {
@@ -18,8 +18,6 @@ interface ShopFiltersProps {
     priceRange: [number, number]
   }) => void
 }
-
-
 
 export default function ShopFilters({ onFilterChange }: ShopFiltersProps) {
   const {
@@ -33,10 +31,10 @@ export default function ShopFilters({ onFilterChange }: ShopFiltersProps) {
     setSizes,
     setColors,
     setPriceRange,
-    clearAll 
+    clearAll
   } = useFilters()
-
-  const router = useRouter() // Initialize router
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   const filterOptions = {
     categories: [
@@ -48,7 +46,6 @@ export default function ShopFilters({ onFilterChange }: ShopFiltersProps) {
       { id: "Hoodies", label: "Hoodies" },
       { id: "Jackets", label: "Jackets" },
       { id: "Pants", label: "Pants" },
-      { id: "Shorts", label: "Shorts" },
       { id: "Hats", label: "Hats" },
     ],
     sizes: [
@@ -64,43 +61,58 @@ export default function ShopFilters({ onFilterChange }: ShopFiltersProps) {
       { id: "Gray", label: "Gray" },
       { id: "Navy", label: "Navy" },
       { id: "Olive", label: "Olive" },
-      { id: "Camoflauge", label: "Camoflauge" },
+      { id: "Camouflage", label: "Camouflage" },
     ]
   }
+
+  // Initialize filters from searchParams on mount
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams)
+    setCategories(params.get("categories")?.split(",").filter(Boolean) || [])
+    setSubcategories(params.get("subcategories")?.split(",").filter(Boolean) || [])
+    setSizes(params.get("sizes")?.split(",").filter(Boolean) || [])
+    setColors(params.get("colors")?.split(",").filter(Boolean) || [])
+    setPriceRange([
+      Number(params.get("minPrice")) || 0,
+      Number(params.get("maxPrice")) || 10000,
+    ])
+  }, [searchParams, setCategories, setSubcategories, setSizes, setColors, setPriceRange])
 
   // Update URL when filters change
   useEffect(() => {
     const params = new URLSearchParams()
-    
     if (selectedCategories.length > 0) {
-      params.set('categories', selectedCategories.join(','))
+      params.set("categories", selectedCategories.join(","))
     }
-    
     if (selectedSubcategories.length > 0) {
-      params.set('subcategories', selectedSubcategories.join(','))
+      params.set("subcategories", selectedSubcategories.join(","))
     }
-
-    params.set('minPrice', priceRange[0].toString())
-    params.set('maxPrice', priceRange[1].toString())
+    if (selectedSizes.length > 0) {
+      params.set("sizes", selectedSizes.join(","))
+    }
+    if (selectedColors.length > 0) {
+      params.set("colors", selectedColors.join(","))
+    }
+    params.set("minPrice", priceRange[0].toString())
+    params.set("maxPrice", priceRange[1].toString())
     
-    // Push new URL without page reload
     router.push(`/shop?${params.toString()}`, { scroll: false })
 
     if (onFilterChange) {
-    onFilterChange({
-      categories: selectedCategories,
-      subcategories: selectedSubcategories,
-      sizes: selectedSizes,
-      colors: selectedColors,
-      priceRange
-    })
+      onFilterChange({
+        categories: selectedCategories,
+        subcategories: selectedSubcategories,
+        sizes: selectedSizes,
+        colors: selectedColors,
+        priceRange
+      })
     }
-  }, [selectedCategories, selectedSubcategories, router])
+  }, [selectedCategories, selectedSubcategories, selectedSizes, selectedColors, priceRange, router, onFilterChange])
 
   const renderFilterSection = (
     value: string,
     title: string,
-    items: {id: string, label: string}[],
+    items: { id: string, label: string }[],
     selectedItems: string[],
     onChange: (id: string) => void
   ) => (
@@ -127,13 +139,13 @@ export default function ShopFilters({ onFilterChange }: ShopFiltersProps) {
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium mb-4">Filters</h3>
-        <Button 
-          variant="outline" 
-          size="sm" 
+        <Button
+          variant="outline"
+          size="sm"
           onClick={() => {
             clearAll()
-            router.push('/shop', { scroll: false })
-          }} 
+            router.push("/shop", { scroll: false })
+          }}
           className="w-full"
         >
           Clear All

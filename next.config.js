@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',          // Required for static export (GitHub Pages)
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/DEVOL-HERESY' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/DEVOL-HERESY/' : '',
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
@@ -11,6 +13,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

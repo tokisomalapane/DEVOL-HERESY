@@ -16,7 +16,6 @@ export default function Navbar() {
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0)
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
@@ -39,7 +38,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -66,7 +64,6 @@ export default function Navbar() {
               </Button>
             </Link>
 
-            {/* Mobile menu button */}
             <Button variant="ghost" size="icon" className="md:hidden ml-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -74,7 +71,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation - Improved for better mobile experience */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-b border-neutral-200 shadow-lg absolute w-full left-0 z-50">
           <div className="container mx-auto px-4 py-4">

@@ -93,19 +93,7 @@ const products: Product[] = [
     colors: ["Black"],
     inStock: true,
   },
-  {
-    id: "essential-hat-1",
-    name: "Denim Hat",
-    description: "Denim Hat perfect for casual wear on sunny days.",
-    price: 249.99,
-    image: "/Devol Essentials/IMG_20250524_114034.jpg?height=500&width=500",
-    category: "Essentials",
-    subcategory: "Hats",
-    isExclusive: false,
-    sizes: ["One Size"],
-    colors: ["Black"],
-    inStock: true,
-  },
+  
   {
     id: "essential-hat-2",
     name: "Denim Hat",
@@ -116,7 +104,7 @@ const products: Product[] = [
     subcategory: "Hats",
     isExclusive: false,
     sizes: ["One Size"],
-    colors: ["Blue"],
+    colors: ["Blue" , "Black"],
     inStock: true,
   },
   {
@@ -260,7 +248,7 @@ export function getExclusiveProducts(): Product[] {
 
 // Get essential products
 export function getEssentialProducts(): Product[] {
-  return products.filter((product) => product.category === "Essentials")
+  return products.filter((product) => !product.isExclusive)
 }
 
 // Get all Product Id

@@ -1,14 +1,13 @@
 "use client"
 
-import React, { useEffect, useState, useMemo } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import React, { useMemo } from "react"
+import { useSearchParams } from "next/navigation"
 import { FilterProvider, useFilters } from "@/context/filter-context"
 import ProductGrid from "@/components/product-grid"
 import { getAllProducts } from "@/lib/products"
 import ShopFilters from "@/components/shop-filters"
 import type { Product } from "@/types/product"
 
-// Updated filter type
 interface FilterState {
   categories: string[]
   subcategories: string[]
@@ -19,53 +18,26 @@ interface FilterState {
 
 export default function ShopPage() {
   const searchParams = useSearchParams()
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
 
-  const [initialFilters, setInitialFilters] = useState<FilterState>({
-    categories: searchParams.get("categories")?.split(",") || [],
-    subcategories: searchParams.get("subcategories")?.split(",") || [],
-    sizes: searchParams.get("sizes")?.split(",") || [],
-    colors: searchParams.get("colors")?.split(",") || [],
+  const initialFilters = useMemo<FilterState>(() => ({
+    categories: searchParams.get("categories")?.split(",").filter(Boolean) || [],
+    subcategories: searchParams.get("subcategories")?.split(",").filter(Boolean) || [],
+    sizes: searchParams.get("sizes")?.split(",").filter(Boolean) || [],
+    colors: searchParams.get("colors")?.split(",").filter(Boolean) || [],
     priceRange: [
       Number(searchParams.get("minPrice")) || 0,
       Number(searchParams.get("maxPrice")) || 10000,
     ],
-  })
+  }), [searchParams])
 
   const allProducts = getAllProducts()
-
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams)
-
-    if (initialFilters.categories.length > 0) {
-      params.set("categories", initialFilters.categories.join(","))
-    } else {
-      params.delete("categories")
-    }
-
-    if (initialFilters.subcategories.length > 0) {
-      params.set("subcategories", initialFilters.subcategories.join(","))
-    } else {
-      params.delete("subcategories")
-    }
-
-    router.replace(`?${params.toString()}`, { scroll: false })
-    setIsLoading(false)
-  }, [initialFilters, router, searchParams])
-
-  if (isLoading) return <div className="p-8">Loading filters...</div>
 
   return (
     <FilterProvider initialFilters={initialFilters}>
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <aside className="w-full md:w-64 shrink-0">
-            <ShopFilters
-              onFilterChange={(newFilters: FilterState) =>
-                setInitialFilters(newFilters)
-              }
-            />
+            <ShopFilters />
           </aside>
           <div className="flex-1">
             <h1 className="text-3xl font-bold mb-6">All Products</h1>

@@ -1,12 +1,12 @@
 import Link from "next/link"
 
 const categories = [
-  { name: "T-Shirts", path: "/shop?subcategory=T-Shirts", image: "/Devol Essentials/IMG_20250524_113248.jpg?height=400&width=300" },
-  { name: "Hoodies", path: "/shop?subcategory=Hoodies", image: "/Devol Essentials/IMG_20250524_114006.jpg?height=400&width=300" },
-  { name: "Jackets", path: "/shop?subcategory=Jackets", image: "/Devol Essentials/IMG_20250524_114132.jpg?height=400&width=300" },
-  { name: "Pants", path: "/shop?subcategory=Pants", image: "/Devol Essentials/IMG_20250524_114200.jpg?height=400&width=300" },
-  { name: "Shorts", path: "/shop?subcategory=Shorts", image: "/coming-soon-2070393_640.png?height=400&width=300" },
-  { name: "Hats", path: "/shop?subcategory=Hats", image: "/Devol Essentials/IMG_20250524_114034.jpg?height=400&width=300" },
+  { name: "T-Shirts", path: "/shop/?subcategories=T-Shirts", image: "/Devol Essentials/IMG_20250524_113248.jpg?height=400&width=300" },
+  { name: "Hoodies", path: "/shop/?subcategories=Hoodies", image: "/Devol Essentials/IMG_20250524_114006.jpg?height=400&width=300" },
+  { name: "Jackets", path: "/shop/?subcategories=Jackets", image: "/Devol Essentials/IMG_20250524_114132.jpg?height=400&width=300" },
+  { name: "Pants", path: "/shop/?subcategories=Pants", image: "/Devol Essentials/IMG_20250524_114200.jpg?height=400&width=300" },
+  { name: "Shorts", path: "/shop/?subcategories=Shorts", image: "/coming-soon-2070393_640.png?height=400&width=300" },
+  { name: "Hats", path: "/shop/?subcategories=Hats", image: "/Devol Essentials/IMG_20250524_114034.jpg?height=400&width=300" },
 ]
 
 export default function CategoryShowcase() {
